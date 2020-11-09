@@ -8,21 +8,20 @@ import { LoggerService } from '../model/logger-service';
   styleUrls: ['./course-item.component.css']
 })
 export class CourseItemComponent {
-
   @Input() courseItem: Course;
-  
-  @Output() onDelete: EventEmitter<number> = new EventEmitter<number>();
-  @Output() onEdit: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor(private logger: LoggerService) { }
+  @Output() deleteCourseItemEvent: EventEmitter<number> = new EventEmitter<number>();
+  @Output() editCourseItemEvent: EventEmitter<number> = new EventEmitter<number>();
+
+  constructor(private logger: LoggerService) {}
 
   deleteItem() {
-    this.logger.log("Item Component - deleteItem");
-    this.onDelete.emit(this.courseItem.id);
+    this.logger.log('Item Component - deleteItem');
+    this.deleteCourseItemEvent.emit(this.courseItem.id);
   }
 
   editItem() {
-    this.logger.log("Item Component - editItem");
-    this.onEdit.emit(this.courseItem.id);
+    this.logger.log('Item Component - editItem');
+    this.editCourseItemEvent.emit(this.courseItem.id);
   }
 }

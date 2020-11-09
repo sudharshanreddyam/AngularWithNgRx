@@ -13,21 +13,24 @@ import { UserService } from './model/user-service';
 import { FormsModule } from '@angular/forms';
 import { LoggerService } from './model/logger-service';
 
-
 @NgModule({
-  declarations: [CourseListComponent, HeaderComponent, FooterComponent, CourseItemComponent, BreadcrumbsComponent, SearchSectionComponent],
-  imports: [
-    CommonModule,
-    FormsModule
+  declarations: [
+    CourseListComponent,
+    HeaderComponent,
+    FooterComponent,
+    CourseItemComponent,
+    BreadcrumbsComponent,
+    SearchSectionComponent
   ],
-  providers: [
-    CourseService,
-    DatePipe,
-    UserService,
-    LoggerService
-  ],
+  imports: [CommonModule, FormsModule],
+  providers: [CourseService, DatePipe, UserService, LoggerService],
   exports: [
-    CourseListComponent, HeaderComponent, FooterComponent, CourseItemComponent, BreadcrumbsComponent, SearchSectionComponent
+    CourseListComponent,
+    HeaderComponent,
+    FooterComponent,
+    CourseItemComponent,
+    BreadcrumbsComponent,
+    SearchSectionComponent
   ]
 })
-export class CoreModule { }
+export class CoreModule {}

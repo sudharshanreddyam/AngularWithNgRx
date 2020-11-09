@@ -1,16 +1,22 @@
 <div class="px-5 bg-light pb-5">
-  
   <app-search-section></app-search-section>
 
   <div class="list-group">
-    <app-course-item *ngFor="let singleCourse of courseList" [courseItem]="singleCourse" 
-    (onDelete)="deleteCourseItem($event)" 
-    (onEdit)="editCourseItem($event)" >
-  </app-course-item>
+    <app-course-item
+      *ngFor="let singleCourse of courseList"
+      [courseItem]="singleCourse"
+      (deleteCourseItemEvent)="deleteCourseItem($event)"
+      (editCourseItemEvent)="editCourseItem($event)"
+    >
+    </app-course-item>
   </div>
 
-  <a href="#" class="list-group-item mt-2 text-center my-2" (click)="loadMoreCourseItems(1)" >
+  <a
+    id="load-more-button"
+    href="#"
+    class="list-group-item mt-2 text-center my-2"
+    (click)="loadMoreCourseItems()"
+  >
     Load more...
   </a>
-
 </div>
