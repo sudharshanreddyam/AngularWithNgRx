@@ -1,0 +1,11 @@
+<a href="#" class="list-group-item list-group-item-action flex-column align-items-start my-2">
+  <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{courseItem.title}}</h5>
+      <small class="text-muted">{{courseItem.getDuration()}} {{courseItem.getDate() }}</small>    
+  </div>
+  <p class="mb-1">
+    {{courseItem.description}}
+    <button class="btn btn-outline-info float-right" type="submit" (click)="deleteItem()">- Delete</button>
+      <button class="btn btn-outline-info float-right" type="submit" (click)="editItem()">+ Edit</button>
+  </p>
+</a>
