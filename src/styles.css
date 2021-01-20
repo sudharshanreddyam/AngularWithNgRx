@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.btn-common {
+  padding: 9px;
+  color: #FFFFFF;
+  alignment-baseline: center;
+  border: none;
+  border-radius: 3px;
+  background: #009ECC;
+  line-height: 12px;
+  letter-spacing: -0.1px;
+  font-size: 12px;
+  font-family: "SourceSansPro-Semibold", sans-serif;
+  font-weight: 600;
+  vertical-align: top;
+  cursor: pointer;
+  outline: #3d58a3;
+}
+
+.btn-common:hover {
+  color: #009ECC;
+  background: #cbcbcb;
+}
+
+.btn-common:active {
+  background: #b6b5b5;
+}
+
+.btn-common i {
+  margin-right: 5px;
+  font-size: 14px;
+}
+
+.btn-common span {
+ position: relative;
+  bottom: 2px;
+}
