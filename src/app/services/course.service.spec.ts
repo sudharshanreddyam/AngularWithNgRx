@@ -1,5 +1,5 @@
-import { Course } from './course';
-import { CourseService } from './course.service';
+import {Course} from '../interfaces/course';
+import {CourseService} from './course.service';
 
 
 describe( 'CourseService', () => {

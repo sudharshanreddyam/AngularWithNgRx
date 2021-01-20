@@ -1,25 +1,26 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { LogoComponent } from './logo.component';
 
-describe('LogoComponent', () => {
-  let component: LogoComponent;
+
+describe( 'LogoComponent', () => {
+
+  let logoComponent: LogoComponent;
   let fixture: ComponentFixture<LogoComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach( async () => {
+    await TestBed.configureTestingModule( {
       declarations: [ LogoComponent ]
-    })
-    .compileComponents();
-  });
+    } )
+      .compileComponents();
+  } );
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(LogoComponent);
-    component = fixture.componentInstance;
+  beforeEach( () => {
+    fixture = TestBed.createComponent( LogoComponent );
+    logoComponent = fixture.componentInstance;
     fixture.detectChanges();
-  });
+  } );
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  it( 'should create logo component', () => {
+    expect( logoComponent ).toBeTruthy();
+  } );
+} );
