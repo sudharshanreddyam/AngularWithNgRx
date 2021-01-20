@@ -1,0 +1,49 @@
+<div class="login-layout">
+  <div class="form-wrapper">
+    <div class="header-wrapper">
+      <h1 class="login-header">Login</h1>
+      <small
+        *ngIf="form.invalid && form.dirty"
+        class="form-warning"
+      >Wrong e-mail or password</small>
+    </div>
+    <form
+      [formGroup]="form"
+      (ngSubmit)="submit()"
+    >
+      <div class="label-wrapper">
+        <label for="email">Email:</label>
+        <small>*required</small>
+      </div>
+      <input
+        formControlName="email"
+        id="email"
+        class="field"
+        type="email"
+        placeholder="Enter Email"
+        required
+      >
+
+      <div class="label-wrapper">
+        <label for="password">Password:</label>
+        <small>*required</small>
+      </div>
+      <input
+        formControlName="password"
+        id="password"
+        class="field"
+        type="password"
+        placeholder="Enter Password"
+        required
+      >
+
+      <div class="button-group">
+        <a href="#">Forgot Password?</a>
+        <button
+          type="submit"
+          [disabled]="form.invalid"
+        >LogIn</button>
+      </div>
+    </form>
+  </div>
+</div>
