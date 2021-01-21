@@ -1,0 +1,19 @@
+<div class="label-wrapper">
+  <label for="authors">Authors:</label>
+  <small>*required</small>
+</div>
+<input
+  [(ngModel)]="value"
+  id="authors"
+  class="field"
+  type="text"
+  placeholder="Start typing"
+  required
+>
+
+<select multiple>
+  <option
+    *ngFor="let author of authors | filter:value"
+    [value]="author.name"
+  >{{author.name}}</option>
+</select>

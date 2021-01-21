@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="label-wrapper">
+    <label for="length">Duration:</label>
+    <small>*required</small>
+  </div>
+  <input
+    [(ngModel)]="value"
+    id="length"
+    class="field"
+    type="number"
+    min="0"
+    placeholder="minutes"
+    required
+  >
+  <p *ngIf="value">{{value | duration}}</p>
+
+</div>
