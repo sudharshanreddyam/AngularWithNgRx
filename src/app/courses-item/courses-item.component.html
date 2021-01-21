@@ -1,0 +1,37 @@
+<div class="course-card">
+  <div class="top-section">
+    <h3
+      [ngClass]="{'star': course.isTopRated}"
+      class="course-title"
+    >{{course.name}}</h3>
+    <div class="course-time-block">
+      <p class="course-time">
+        <i class="material-icons">schedule</i>
+        <span>{{course.length | duration}}</span>
+      </p>
+      <p class="course-time">
+        <i class="material-icons">calendar_today</i>
+        <span>{{course.date | date: 'MM/d/yy'}}</span>
+      </p>
+    </div>
+  </div>
+  <div class="content-container">
+    <p>{{course.description}}</p>
+    <div class="bottom-section">
+      <button
+        class="btn-common"
+        (click)="edit()"
+      >
+        <i class="material-icons">edit</i>
+        <span>Edit</span>
+      </button>
+      <button
+        (click)="delete(course.id)"
+        class="btn-common"
+      >
+        <i class="material-icons">delete</i>
+        <span>Delete</span>
+      </button>
+    </div>
+  </div>
+</div>

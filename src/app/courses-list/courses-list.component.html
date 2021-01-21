@@ -1,0 +1,45 @@
+<div class="course-page">
+  <form class="search-form">
+    <input
+      type="text"
+      placeholder="Type to search"
+      (keyup)="search($event)"
+    />
+  </form>
+
+  <button
+    type="button"
+    class="btn-common btn-add"
+    (click)="add()"
+  >
+    <i class="material-icons">add_circle_outline</i>
+    <span>Add course</span>
+  </button>
+
+  <div *ngIf="!loadingService.isLoading; else loading">
+    <div *ngIf="allCourses.length > 0; else coursesNotFound">
+      <ul class="course-list">
+        <li *ngFor="let course of allCourses">
+          <app-courses-item
+            appCourseDate
+            [course]="course"
+            (deleteHandler)="delete($event)"
+          ></app-courses-item>
+        </li>
+      </ul>
+      <button
+        type="button"
+        (click)="loadMore()"
+        class="loadMore-btn"
+      >Load more</button>
+    </div>
+  </div>
+
+  <ng-template #coursesNotFound>
+    <p class="notFoundMassage">{{coursesNotFoundMessage | uppercase}}</p>
+  </ng-template>
+
+  <ng-template #loading>
+    <app-loader></app-loader>
+  </ng-template>
+</div>

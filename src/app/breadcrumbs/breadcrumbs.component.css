@@ -1,0 +1,13 @@
+.breadcrumbs {
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #464A5A;
+  font-size: 14px;
+  font-family: "SourceSansPro-Bold", sans-serif;
+  text-transform: none;
+  text-align: left;
+  font-weight: 700;
+  background: #FFFFFF;
+  width: calc(100% - 85px - 85px);
+  padding: 10px 85px;
+}
