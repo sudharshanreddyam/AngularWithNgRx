@@ -1,0 +1,52 @@
+.header-container {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #303240;
+}
+
+.logo-container {
+  position: relative;
+  left: 85px;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  right: 85px;
+  font-family: "SourceSansPro-Regular", monospace;
+  font-size: 14px;
+  text-transform: none;
+  list-style: none;
+}
+
+.btn-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #303240;
+  color: #FFFFFF;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn-link i {
+  margin-right: 5px;
+}
+
+.btn-link:hover {
+  color: #5681EE;
+}
+
+.btn-link:active {
+  color: #3d58a3;
+}
+
+.revert {
+  transform: rotate(180deg);
+}

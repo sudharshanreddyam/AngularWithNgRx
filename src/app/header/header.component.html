@@ -1,0 +1,23 @@
+<div class="header-container">
+  <app-logo class="logo-container"></app-logo>
+  <ul
+    class="nav-container"
+    *ngIf="authService.isAuthenticated()"
+  >
+    <li>
+      <button class="btn-link">
+        <i class="material-icons">person</i>
+        <span>{{fullUserName}}</span>
+      </button>
+    </li>
+    <li>
+      <button
+        class="btn-link"
+        (click)="logout()"
+      >
+        <i class="material-icons revert">exit_to_app</i>
+        <span>Log out</span>
+      </button>
+    </li>
+  </ul>
+</div>
