@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+<<<<<<< HEAD
+=======
+import { FilterPipe } from '../pipes/filter.pipe';
+>>>>>>> main
 import { CourseService } from './../services/course.service';
 
 @Component( {
@@ -9,13 +13,21 @@ import { CourseService } from './../services/course.service';
 } )
 export class CoursesListComponent implements OnInit {
 
+<<<<<<< HEAD
   public allCourses = [];
   public currentCountCourses = 0;
+=======
+  public allCourses;
+>>>>>>> main
   public searchParam;
   public coursesNotFoundMessage = 'no data. feel free to add new courses';
 
   constructor (
     private courseService: CourseService,
+<<<<<<< HEAD
+=======
+    private filterPipe: FilterPipe,
+>>>>>>> main
     private router: Router
   ) { }
 

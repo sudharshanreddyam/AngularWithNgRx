@@ -1,6 +1,10 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Course } from '../interfaces/course';
+<<<<<<< HEAD
+=======
+import { AuthService } from './../services/auth.service';
+>>>>>>> main
 
 @Component( {
   selector: 'app-courses-item',
@@ -10,9 +14,15 @@ import { Course } from '../interfaces/course';
 } )
 export class CoursesItemComponent implements OnInit {
   @Input() course: Course;
+<<<<<<< HEAD
   @Output() deleteHandler = new EventEmitter<number>();
 
   constructor ( private router: Router ) { }
+=======
+  @Output() deleteHandler = new EventEmitter<string>();
+
+  constructor ( private router: Router, private authService: AuthService ) { }
+>>>>>>> main
 
   ngOnInit(): void {
   }

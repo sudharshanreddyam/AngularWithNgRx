@@ -24,7 +24,12 @@ export class CourseDateDirective implements OnInit {
   }
 
   isFreshDate(): boolean {
+<<<<<<< HEAD
     return new Date( this.course.date ) < this.currentDate
       && new Date( this.course.date ) >= this.getCalculatedDate();
+=======
+    return this.course.creationDate < this.currentDate
+      && this.course.creationDate >= this.getCalculatedDate();
+>>>>>>> main
   }
 }
