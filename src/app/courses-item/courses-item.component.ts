@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 import { Router } from '@angular/router';
 import { Course } from '../interfaces/course';
 
+
 @Component( {
   selector: 'app-courses-item',
   templateUrl: './courses-item.component.html',
@@ -13,6 +14,7 @@ export class CoursesItemComponent implements OnInit {
   @Output() deleteHandler = new EventEmitter<number>();
 
   constructor ( private router: Router ) { }
+
 
   ngOnInit(): void {
   }
