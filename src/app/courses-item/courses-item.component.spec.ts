@@ -1,25 +1,31 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CoursesItemComponent } from './courses-item.component';
+import {Course} from '../interfaces/course';
 
-describe('CoursesItemComponent', () => {
-  let component: CoursesItemComponent;
-  let fixture: ComponentFixture<CoursesItemComponent>;
+describe( 'CoursesItemComponent', () => {
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ CoursesItemComponent ]
-    })
-    .compileComponents();
-  });
+  let coursesItemComponent: CoursesItemComponent;
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CoursesItemComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  beforeEach( () => {
+    coursesItemComponent = new CoursesItemComponent();
+  } );
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  it( 'should emit delete by id', () => {
+    const currentId: string = '1';
+    let resultId: string;
+
+    coursesItemComponent.deleteHandler.subscribe( id => resultId = id );
+    coursesItemComponent.delete( currentId );
+
+    expect( coursesItemComponent.delete ).toBeDefined();
+    expect( resultId ).toEqual( currentId );
+  } );
+
+  it( 'should course contain equal object', () => {
+    const course: Course = new Course( '1', 'Angular Course', new Date(), 60, 'Angular Course' );
+
+    coursesItemComponent.course = course;
+
+    expect( coursesItemComponent.course ).toBeInstanceOf( Course );
+    expect( coursesItemComponent.course ).toEqual( course );
+  } );
+} );

@@ -1,0 +1,95 @@
+.form-layout {
+  width: 100%;
+  height: calc(100vh - 60px - 60px);
+  background-color: #f1efef;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-wrapper {
+  min-width: 600px;
+  margin: 0 20px;
+  padding: 0 40px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(29, 30, 38, 0.10), 0 2px 10px 0 rgba(29, 30, 38, 0.15);
+  border: none;
+  border-radius: 10px;
+}
+
+.form-wrapper>form {
+  width: 100%;
+}
+
+.header {
+  width: 100%;
+
+  position: relative;
+  left: 0;
+
+  font-size: 34px;
+
+  text-align: left;
+}
+
+.label-wrapper {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+
+  font-weight: bold;
+}
+
+.label-wrapper>small {
+  font-style: italic;
+
+  color: #cbcbcb;
+}
+
+.field {
+  width: 100%;
+  margin: 5px 0;
+  padding: 5px;
+
+  border: 1px solid grey;
+  border-radius: 2px;
+}
+
+.field[type="date"],
+.field[type="number"] {
+  width: 35%;
+}
+
+.button-group {
+  padding: 20px 0;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.button-group>button {
+  padding: 10px 20px;
+  margin-left: 20px;
+
+  text-align: center;
+
+  background-color: #3a5;
+  border: none;
+  border-radius: 5px;
+
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.button-group>button:disabled {
+  background-color: #cbcbcb;
+  cursor: default;
+}

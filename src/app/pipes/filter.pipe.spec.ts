@@ -1,4 +1,4 @@
-import { Course } from './../course';
+import { Course } from '../interfaces/course';
 import { FilterPipe } from './filter.pipe';
 
 describe( 'FilterPipe', () => {

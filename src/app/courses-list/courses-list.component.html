@@ -1,10 +1,22 @@
 <div class="course-page">
   <form class="search-form">
-    <input [(ngModel)]="searchParam" [ngModelOptions]="{standalone: true}" type="text" placeholder="Type to search"/>
-    <button (click)="search()" type="submit">Search</button>
+    <input
+      [(ngModel)]="searchParam"
+      [ngModelOptions]="{standalone: true}"
+      type="text"
+      placeholder="Type to search"
+    />
+    <button
+      (click)="search()"
+      type="submit"
+    >Search</button>
   </form>
 
-  <button type="button" class="btn-common btn-add">
+  <button
+    type="button"
+    class="btn-common btn-add"
+    (click)="add()"
+  >
     <i class="material-icons">add_circle_outline</i>
     <span>Add course</span>
   </button>
@@ -12,10 +24,18 @@
   <div *ngIf="allCourses.length > 0; else coursesNotFound">
     <ul class="course-list">
       <li *ngFor="let course of allCourses | orderBy: 'creationDate'">
-        <app-courses-item appCourseDate [course]="course" (deleteHandler)="delete($event)"></app-courses-item>
+        <app-courses-item
+          appCourseDate
+          [course]="course"
+          (deleteHandler)="delete($event)"
+        ></app-courses-item>
       </li>
     </ul>
-    <button type="button" (click)="loadMore()" class="loadMore-btn">Load more</button>
+    <button
+      type="button"
+      (click)="loadMore()"
+      class="loadMore-btn"
+    >Load more</button>
   </div>
 
   <ng-template #coursesNotFound>
