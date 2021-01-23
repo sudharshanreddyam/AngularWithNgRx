@@ -19,8 +19,7 @@ export class CourseService {
   }
 
   add( course: Course ): Observable<Course> {
-    course.id = Math.round( Math.random() * 1000 );
-    return this.http.post<Course>( `${ this.serverUrl }/courses`, course );
+    return this.http.post<Course>( `${ this.serverUrl }/courses`, { ...course, id: Math.round( Math.random() * 1000 ) } );
   }
 
   update( course: Course ): Observable<Course> {
