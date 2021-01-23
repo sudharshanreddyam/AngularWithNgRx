@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Course } from '../interfaces/course';
+import { AuthService } from './../services/auth.service';
 
 @Component( {
   selector: 'app-courses-item',
@@ -12,12 +13,17 @@ export class CoursesItemComponent implements OnInit {
   @Input() course: Course;
   @Output() deleteHandler = new EventEmitter<string>();
 
-  constructor ( private router: Router ) { }
+  constructor ( private router: Router, private authService: AuthService ) { }
 
   ngOnInit(): void {
   }
 
   delete( id: string ): void {
+    if ( !this.authService.isAuthenticated() ) {
+      this.router.navigate( [ `login` ] );
+      return;
+    }
+
     const answer: boolean = window.confirm( `Do you really want to delete ${ this.course.title }?` );
 
     if ( answer ) {
@@ -26,6 +32,6 @@ export class CoursesItemComponent implements OnInit {
   }
 
   edit(): void {
-    this.router.navigate( [ `/${ this.course.id }/edit` ] );
+    this.router.navigate( [ `courses/${ this.course.id }` ] );
   }
 }

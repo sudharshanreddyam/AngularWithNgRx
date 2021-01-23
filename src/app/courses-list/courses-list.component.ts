@@ -43,6 +43,6 @@ export class CoursesListComponent implements OnInit {
   }
 
   add(): void {
-    this.router.navigate( [ '/add' ] );
+    this.router.navigate( [ 'courses/new' ] );
   }
 }

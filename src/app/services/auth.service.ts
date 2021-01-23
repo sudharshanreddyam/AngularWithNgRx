@@ -4,7 +4,7 @@ import { User } from './../interfaces/user';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private mockUsers: User[] = [
-    new User('1', 'Ravi', 'Kiran', 'rk@gmail.com', '123456'),
+    new User('1', 'Sudharshan', 'Reddyam', 'SR@gmail.com', '123456')
   ];
 
   login(userData: User): boolean {

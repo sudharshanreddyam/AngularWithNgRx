@@ -18,6 +18,7 @@ import { LogoComponent } from './logo/logo.component';
 import { DurationPipe } from './pipes/duration.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
 import { OrderByPipe } from './pipes/order-by.pipe';
+import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 
 
 @NgModule( {
@@ -37,7 +38,8 @@ import { OrderByPipe } from './pipes/order-by.pipe';
     LoginPageComponent,
     CourseFormComponent,
     AddPageComponent,
-    EditPageComponent
+    EditPageComponent,
+    NotFoundPageComponent
   ],
   imports: [
     BrowserModule,
