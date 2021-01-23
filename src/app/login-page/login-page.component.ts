@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ILoginResponse } from '../interfaces/responses';
+import { IUser } from '../interfaces/user';
 import { AuthService } from './../services/auth.service';
 
 @Component( {
@@ -16,7 +18,7 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup( {
-      email: new FormControl( null ),
+      login: new FormControl( null ),
       password: new FormControl( null ),
     } );
   }
@@ -26,8 +28,15 @@ export class LoginPageComponent implements OnInit {
       return;
     }
 
-    if ( this.authService.login( this.form.value ) ) {
-      this.router.navigate( [ '/courses' ] );
-    }
+
+    this.authService
+      .login( this.form.value )
+      .subscribe( ( data: ILoginResponse ) => {
+        this.authService.setToken( data.token );
+        this.authService.getUserInfo().subscribe( ( user: IUser ) => {
+          localStorage.setItem( 'userFullName', `${ user.name.first } ${ user.name.last }` );
+          this.router.navigate( [ '/courses' ] );
+        } );
+      } );
   }
 }

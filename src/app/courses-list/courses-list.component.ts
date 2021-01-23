@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+<<<<<<< HEAD
+=======
 import { FilterPipe } from '../pipes/filter.pipe';
+>>>>>>> main
 import { CourseService } from './../services/course.service';
 
 @Component( {
@@ -10,13 +13,21 @@ import { CourseService } from './../services/course.service';
 } )
 export class CoursesListComponent implements OnInit {
 
+<<<<<<< HEAD
+  public allCourses = [];
+  public currentCountCourses = 0;
+=======
   public allCourses;
+>>>>>>> main
   public searchParam;
   public coursesNotFoundMessage = 'no data. feel free to add new courses';
 
   constructor (
     private courseService: CourseService,
+<<<<<<< HEAD
+=======
     private filterPipe: FilterPipe,
+>>>>>>> main
     private router: Router
   ) { }
 
@@ -30,19 +41,21 @@ export class CoursesListComponent implements OnInit {
 
   search(): void {
     this.loadCourses();
-    this.allCourses = this.filterPipe.transform( this.allCourses, this.searchParam );
+    this.courseService.getAll( 3, this.searchParam ).subscribe( courses => this.allCourses = courses );
   }
 
-  delete( id: string ): void {
-    this.courseService.delete( id );
-    this.loadCourses();
+  delete( id: number ): void {
+    this.courseService.delete( id ).subscribe( () => this.loadCourses() );
   }
 
   loadMore(): void {
-    console.log( 'load more courses' );
+    this.courseService.getAll( 10, null, null, this.currentCountCourses ).subscribe( courses => {
+      this.allCourses = courses;
+      this.currentCountCourses += 10;
+    } );
   }
 
   add(): void {
-    this.router.navigate( [ 'courses/new' ] );
+    this.router.navigate( [ '/add' ] );
   }
 }

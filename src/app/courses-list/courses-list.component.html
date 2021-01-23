@@ -23,7 +23,7 @@
 
   <div *ngIf="allCourses.length > 0; else coursesNotFound">
     <ul class="course-list">
-      <li *ngFor="let course of allCourses | orderBy: 'creationDate'">
+      <li *ngFor="let course of allCourses">
         <app-courses-item
           appCourseDate
           [course]="course"

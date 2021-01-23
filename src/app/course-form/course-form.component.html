@@ -6,12 +6,12 @@
       (ngSubmit)="submit()"
     >
       <div class="label-wrapper">
-        <label for="title">Title:</label>
+        <label for="name">Title:</label>
         <small>*required</small>
       </div>
       <input
-        formControlName="title"
-        id="title"
+        formControlName="name"
+        id="name"
         class="field"
         type="text"
         placeholder="Text input"
@@ -31,27 +31,27 @@
       ></textarea>
 
       <div class="label-wrapper">
-        <label for="duration">Duration:</label>
+        <label for="length">Duration:</label>
         <small>*required</small>
       </div>
       <input
-        formControlName="duration"
-        id="duration"
+        formControlName="length"
+        id="length"
         class="field"
         type="number"
         min="0"
         placeholder="minutes"
         required
       >
-      <p *ngIf="form.controls.duration.dirty">{{form.controls.duration.value | duration}}</p>
+      <p *ngIf="form.controls.length.dirty">{{form.controls.length.value | duration}}</p>
 
       <div class="label-wrapper">
-        <label for="creationDate">Date:</label>
+        <label for="date">Date:</label>
         <small>*required</small>
       </div>
       <input
-        formControlName="creationDate"
-        id="creationDate"
+        formControlName="date"
+        id="date"
         class="field"
         type="date"
         required

@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,36 +12,37 @@ import { CourseService } from './../services/course.service';
 } )
 export class CourseFormComponent implements OnInit {
 
-  public form: FormGroup;
-  private id: string;
+  public form: FormGroup = new FormGroup( {
+    name: new FormControl( null ),
+    description: new FormControl( null ),
+    length: new FormControl( null ),
+    date: new FormControl( null ),
+    authors: new FormControl( null ),
+  } );;
+  private id: number;
   private currentCourse: Course;
 
   constructor (
     private router: Router,
     private route: ActivatedRoute,
-    private courseService: CourseService
+    private courseService: CourseService,
+    private datePipe: DatePipe
   ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe( params => this.id = params.id );
 
     if ( this.id ) {
-      this.courseService.getById( this.id ).subscribe( course => this.currentCourse = course );
+      this.courseService.getById( this.id ).subscribe( course => {
+        this.currentCourse = course;
 
-      this.form = new FormGroup( {
-        title: new FormControl( this.currentCourse.title ),
-        description: new FormControl( this.currentCourse.description ),
-        duration: new FormControl( this.currentCourse.duration ),
-        creationDate: new FormControl( this.currentCourse.creationDate ),
-        authors: new FormControl( this.currentCourse.authors.join( ' ' ) ),
-      } );
-    } else {
-      this.form = new FormGroup( {
-        title: new FormControl( null ),
-        description: new FormControl( null ),
-        duration: new FormControl( null ),
-        creationDate: new FormControl( null ),
-        authors: new FormControl( null ),
+        this.form = new FormGroup( {
+          name: new FormControl( this.currentCourse.name ),
+          description: new FormControl( this.currentCourse.description ),
+          length: new FormControl( this.currentCourse.length ),
+          date: new FormControl( this.datePipe.transform( new Date( this.currentCourse.date ), 'yyyy-MM-dd' ) ),
+          authors: new FormControl( this.currentCourse.authors.name ),
+        } );
       } );
     }
   }
@@ -52,14 +54,16 @@ export class CourseFormComponent implements OnInit {
 
     const course: Course = {
       ...this.form.value,
-      authors: this.form.value.authors.split( ' ' )
+      authors: {
+        name: this.form.value.authors.split( ' ' )
+      }
     };
 
     if ( this.id ) {
       course.id = this.id;
-      this.courseService.update( course );
+      this.courseService.update( course ).subscribe();
     } else {
-      this.courseService.add( course );
+      this.courseService.add( course ).subscribe();
     }
 
     this.router.navigate( [ '/courses' ] );

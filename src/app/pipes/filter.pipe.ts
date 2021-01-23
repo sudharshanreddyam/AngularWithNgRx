@@ -7,7 +7,7 @@ import { Course } from '../interfaces/course';
 export class FilterPipe implements PipeTransform {
 
   transform( courses: Course[], part: string ): Course[] {
-    return courses.filter( course => course.title.includes( part ) );
+    return courses.filter( course => course.name.includes( part ) );
   }
 
 }

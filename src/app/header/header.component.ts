@@ -11,6 +11,8 @@ export class HeaderComponent implements OnInit {
 
   constructor ( public authService: AuthService, private router: Router ) { }
 
+  public fullUserName: string = localStorage.getItem( 'userFullName' );
+
   ngOnInit(): void { }
 
   logout(): void {

@@ -13,7 +13,7 @@ export class BreadcrumbsComponent implements OnInit {
   constructor ( private route: ActivatedRoute ) { }
 
   ngOnInit(): void {
-    this.route.url.subscribe( path => this.breadcrumbs = path.join( ' / ' ) );
+    this.route.url.subscribe( path => this.breadcrumbs = path.join( '/' ) );
   }
 
 }

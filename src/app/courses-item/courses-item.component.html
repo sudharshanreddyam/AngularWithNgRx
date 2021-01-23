@@ -1,17 +1,17 @@
 <div class="course-card">
   <div class="top-section">
     <h3
-      [ngClass]="{'star': course.topRated}"
+      [ngClass]="{'star': course.isTopRated}"
       class="course-title"
-    >{{course.title}}</h3>
+    >{{course.name}}</h3>
     <div class="course-time-block">
       <p class="course-time">
         <i class="material-icons">schedule</i>
-        <span>{{course.duration | duration}}</span>
+        <span>{{course.length | duration}}</span>
       </p>
       <p class="course-time">
         <i class="material-icons">calendar_today</i>
-        <span>{{course.creationDate | date: 'MM/d/yy'}}</span>
+        <span>{{course.date | date: 'MM/d/yy'}}</span>
       </p>
     </div>
   </div>

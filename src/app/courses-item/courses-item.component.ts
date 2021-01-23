@@ -1,7 +1,10 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Course } from '../interfaces/course';
+<<<<<<< HEAD
+=======
 import { AuthService } from './../services/auth.service';
+>>>>>>> main
 
 @Component( {
   selector: 'app-courses-item',
@@ -11,20 +14,21 @@ import { AuthService } from './../services/auth.service';
 } )
 export class CoursesItemComponent implements OnInit {
   @Input() course: Course;
+<<<<<<< HEAD
+  @Output() deleteHandler = new EventEmitter<number>();
+
+  constructor ( private router: Router ) { }
+=======
   @Output() deleteHandler = new EventEmitter<string>();
 
   constructor ( private router: Router, private authService: AuthService ) { }
+>>>>>>> main
 
   ngOnInit(): void {
   }
 
-  delete( id: string ): void {
-    if ( !this.authService.isAuthenticated() ) {
-      this.router.navigate( [ `login` ] );
-      return;
-    }
-
-    const answer: boolean = window.confirm( `Do you really want to delete ${ this.course.title }?` );
+  delete( id: number ): void {
+    const answer: boolean = window.confirm( `Do you really want to delete ${ this.course.name }?` );
 
     if ( answer ) {
       this.deleteHandler.emit( id );
@@ -32,6 +36,6 @@ export class CoursesItemComponent implements OnInit {
   }
 
   edit(): void {
-    this.router.navigate( [ `courses/${ this.course.id }` ] );
+    this.router.navigate( [ `/${ this.course.id }/edit` ] );
   }
 }
