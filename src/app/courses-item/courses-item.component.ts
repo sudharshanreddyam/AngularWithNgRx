@@ -2,6 +2,10 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 import { Router } from '@angular/router';
 import { Course } from '../interfaces/course';
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 @Component( {
   selector: 'app-courses-item',
   templateUrl: './courses-item.component.html',
