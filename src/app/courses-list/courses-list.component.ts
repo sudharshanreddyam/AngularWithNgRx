@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingService } from '../services/loading.service';
 import { ICourse } from './../interfaces/course';
-
 import { CourseService } from './../services/course.service';
 
 @Component( {
