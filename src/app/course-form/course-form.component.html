@@ -1,0 +1,85 @@
+<div class="form-layout">
+  <div class="form-wrapper">
+    <h1 class="header">New Course</h1>
+    <form
+      [formGroup]="form"
+      (ngSubmit)="submit()"
+    >
+      <div class="label-wrapper">
+        <label for="name">Title:</label>
+        <small>*required</small>
+      </div>
+      <input
+        formControlName="name"
+        id="name"
+        class="field"
+        type="text"
+        placeholder="Text input"
+        required
+      >
+
+      <div class="label-wrapper">
+        <label for="description">Description:</label>
+        <small>*required</small>
+      </div>
+      <textarea
+        formControlName="description"
+        id="description"
+        class="field"
+        placeholder="Add description"
+        required
+      ></textarea>
+
+      <div class="label-wrapper">
+        <label for="length">Duration:</label>
+        <small>*required</small>
+      </div>
+      <input
+        formControlName="length"
+        id="length"
+        class="field"
+        type="number"
+        min="0"
+        placeholder="minutes"
+        required
+      >
+      <p *ngIf="form.controls.length.dirty">{{form.controls.length.value | duration}}</p>
+
+      <div class="label-wrapper">
+        <label for="date">Date:</label>
+        <small>*required</small>
+      </div>
+      <input
+        formControlName="date"
+        id="date"
+        class="field"
+        type="date"
+        required
+      >
+
+      <div class="label-wrapper">
+        <label for="authors">Authors:</label>
+        <small>*required</small>
+      </div>
+      <input
+        formControlName="authors"
+        id="authors"
+        class="field"
+        type="text"
+        placeholder="Start typing"
+        required
+      >
+
+      <div class="button-group">
+        <button
+          (click)="cancel()"
+          type="button"
+        >Cancel</button>
+        <button
+          type="submit"
+          [disabled]="form.invalid"
+        >Save</button>
+      </div>
+    </form>
+  </div>
+</div>

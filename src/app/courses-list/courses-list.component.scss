@@ -1,0 +1,46 @@
+.course-list {
+  padding: 0;
+  list-style: none;
+}
+
+
+.course-page {
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+}
+
+.btn-add {
+  align-self: flex-end;
+}
+
+.search-form {
+  color: #cbcbcb;
+  font-size: 18px;
+}
+
+.search-form input {
+  border: 1px solid #cbcbcb;
+  border-radius: 3px;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.search-form button {
+  border-radius: 3px;
+  background: #67A300;
+  color: #FFFFFF;
+  border: none;
+  outline: none;
+  padding: 10px 16px;
+  font-size: 14px;
+}
+
+.search-form button:hover {
+  color: #67A300;
+  background: #cbcbcb;
+}
+
+.search-form button:active {
+  background: #b6b5b5;
+}
