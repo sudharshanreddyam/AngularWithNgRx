@@ -4,10 +4,6 @@ import { CoursesListComponent } from './courses-list.component';
 import {Course} from '../interfaces/course';
 import {CourseService} from '../services/course.service';
 
-<<<<<<< HEAD
-
-=======
->>>>>>> main
 describe( 'CoursesListComponent', () => {
 
   let fixture: ComponentFixture<CoursesListComponent>;

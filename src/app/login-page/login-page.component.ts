@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ILoginResponse } from '../interfaces/responses';
 import { IUser } from '../interfaces/user';
 import { AuthService } from './../services/auth.service';
+import { LoadingService } from './../services/loading.service';
 
 @Component( {
   selector: 'app-login-page',
@@ -14,7 +15,11 @@ export class LoginPageComponent implements OnInit {
 
   public form: FormGroup;
 
-  constructor ( private authService: AuthService, private router: Router ) { }
+  constructor (
+    private authService: AuthService,
+    private router: Router,
+    public loadingService: LoadingService
+  ) { }
 
   ngOnInit(): void {
     this.form = new FormGroup( {
@@ -28,13 +33,14 @@ export class LoginPageComponent implements OnInit {
       return;
     }
 
+    this.loadingService.loadingOn();
 
     this.authService
       .login( this.form.value )
       .subscribe( ( data: ILoginResponse ) => {
         this.authService.setToken( data.token );
         this.authService.getUserInfo().subscribe( ( user: IUser ) => {
-          localStorage.setItem( 'userFullName', `${ user.name.first } ${ user.name.last }` );
+          this.loadingService.loadingOff();
           this.router.navigate( [ '/courses' ] );
         } );
       } );

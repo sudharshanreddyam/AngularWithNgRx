@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-<<<<<<< HEAD
-=======
-import { FilterPipe } from '../pipes/filter.pipe';
->>>>>>> main
+import { LoadingService } from '../services/loading.service';
+import { ICourse } from './../interfaces/course';
+
 import { CourseService } from './../services/course.service';
 
 @Component( {
@@ -13,22 +12,15 @@ import { CourseService } from './../services/course.service';
 } )
 export class CoursesListComponent implements OnInit {
 
-<<<<<<< HEAD
-  public allCourses = [];
-  public currentCountCourses = 0;
-=======
-  public allCourses;
->>>>>>> main
-  public searchParam;
-  public coursesNotFoundMessage = 'no data. feel free to add new courses';
+  public allCourses: ICourse[] = [];
+  public currentCountCourses: number = 0;
+  public searchParam: string;
+  public coursesNotFoundMessage: string = 'no data. feel free to add new courses';
 
   constructor (
     private courseService: CourseService,
-<<<<<<< HEAD
-=======
-    private filterPipe: FilterPipe,
->>>>>>> main
-    private router: Router
+    private router: Router,
+    public loadingService: LoadingService
   ) { }
 
   ngOnInit(): void {
@@ -36,12 +28,24 @@ export class CoursesListComponent implements OnInit {
   }
 
   loadCourses(): void {
-    this.courseService.getAll().subscribe( courses => this.allCourses = courses );
+    this.loadingService.loadingOn();
+    this.courseService.getAll().subscribe( courses => {
+      this.allCourses = courses;
+      this.loadingService.loadingOff();
+    } );
   }
 
-  search(): void {
-    this.loadCourses();
-    this.courseService.getAll( 3, this.searchParam ).subscribe( courses => this.allCourses = courses );
+  search( event: Event ): void {
+    this.searchParam = ( <HTMLInputElement> event.target ).value;
+
+    if ( this.searchParam.length > 3 ) {
+      this.loadingService.loadingOn();
+      setTimeout( () => {
+        this.loadCourses();
+        this.courseService.getAll( 3, this.searchParam ).subscribe( courses => this.allCourses = courses );
+        this.loadingService.loadingOff();
+      }, 1000 );
+    }
   }
 
   delete( id: number ): void {
@@ -49,9 +53,11 @@ export class CoursesListComponent implements OnInit {
   }
 
   loadMore(): void {
+    this.loadingService.loadingOn();
     this.courseService.getAll( 10, null, null, this.currentCountCourses ).subscribe( courses => {
       this.allCourses = courses;
       this.currentCountCourses += 10;
+      this.loadingService.loadingOff();
     } );
   }
 

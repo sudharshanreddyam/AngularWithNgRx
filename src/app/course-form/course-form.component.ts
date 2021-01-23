@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Course } from '../interfaces/course';
 import { CourseService } from './../services/course.service';
+import { LoadingService } from './../services/loading.service';
 
 @Component( {
   selector: 'app-course-form',
@@ -26,7 +27,8 @@ export class CourseFormComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private courseService: CourseService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private loadingService: LoadingService
   ) { }
 
   ngOnInit(): void {
@@ -52,6 +54,8 @@ export class CourseFormComponent implements OnInit {
       return;
     }
 
+    this.loadingService.loadingOn();
+
     const course: Course = {
       ...this.form.value,
       authors: {
@@ -66,6 +70,7 @@ export class CourseFormComponent implements OnInit {
       this.courseService.add( course ).subscribe();
     }
 
+    this.loadingService.loadingOff();
     this.router.navigate( [ '/courses' ] );
   }
 

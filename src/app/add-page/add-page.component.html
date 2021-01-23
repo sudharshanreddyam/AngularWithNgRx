@@ -1,2 +1,6 @@
 <app-breadcrumbs></app-breadcrumbs>
-<app-course-form></app-course-form>
+<app-course-form *ngIf="!loadingService.isLoading; else loader"></app-course-form>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>

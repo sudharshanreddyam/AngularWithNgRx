@@ -21,6 +21,7 @@ import { DurationPipe } from './pipes/duration.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { AuthInterceptor } from './services/auth.intercepter';
+import { LoaderComponent } from './loader/loader.component';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -45,7 +46,8 @@ const INTERCEPTOR_PROVIDER: Provider = {
     LoginPageComponent,
     CourseFormComponent,
     AddPageComponent,
-    EditPageComponent
+    EditPageComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
